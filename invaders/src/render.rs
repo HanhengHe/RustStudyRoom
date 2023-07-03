@@ -1,13 +1,13 @@
-use std::io::Write;
+use std::io::{Write, Stdout};
 use crate::frame::Frame;
 
-use crossterm::{QueueableCommand, style::SetBackgroundColor, terminal::ClearType};
+use crossterm::{QueueableCommand, style::{SetBackgroundColor, Color}, terminal::{ClearType, Clear}, cursor::MoveTo};
 
 pub fn render(stdout: &mut Stdout, last_frame: &Frame, curr_frame: &Frame, force: bool) {
     if force {
         stdout.queue(SetBackgroundColor(Color::Blue)).unwrap();
         stdout.queue(Clear(ClearType::All)).unwrap();
-        stdout.queue(SetBackgroundColor(Color::Black)).unwrap()
+        stdout.queue(SetBackgroundColor(Color::Black)).unwrap();
     }
     
     for (x, col) in curr_frame.iter().enumerate() {
