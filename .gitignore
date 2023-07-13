@@ -40,4 +40,7 @@
 
 ############################################
 # do not upload secret infomation
-/invaders/target/debug
+/invaders/target
+**/Cargo.toml
+**/.gitignore
+**/target
